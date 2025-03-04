@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Bird-inspired reflexive morphing enables rudderless flight</div>
+            <div class="authors">Eric Chang, Diana D. Chin, David Lentink</div>
+            <div class="journal">Science Robotics, Vol. 9, eado4535, 20 November 2024</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                비둘기를 모방한 무미익 생체하이브리드 로봇 'PigeonBot II'는 새처럼 날개와 꼬리를 반사적으로 변형시켜 수직 꼬리날개 없이도 비행 안정성을 확보한다. 일반 항공기와 달리, 활공하는 새들은 수직 꼬리가 없어도 요 운동과 롤 운동을 안정화하며 난기류 속에서도 날 수 있다. 이 연구는 새의 날개와 꼬리 반사 기능이 수직 꼬리 없는 비행을 어떻게 가능하게 하는지 보여주며, 풍동 실험을 통해 개발된 반사 제어기는 PigeonBot II가 자연 환경에서 비둘기와 유사한 자세로 자율 비행할 수 있게 했다. 이는 새들이 반사 기능을 통해 수직 꼬리 없는 비행을 어떻게 달성하는지 확인하고, 레이더 신호를 줄이고 효율성을 높인 무인 항공기 개발에 영감을 제공한다.
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">일반 항공기는 수직 꼬리날개로 요 안정성을 확보하지만, 새들은 수직 꼬리 없이도 안정적으로 날 수 있음</div>
+                    <div class="bullet">항공기에서 수직 꼬리날개 제거 시 더치 롤 불안정성(<span class="eng">Dutch roll instability</span>)이 발생하여 요 제어가 어려움</div>
+                    <div class="bullet">수직 꼬리 없는 드문 항공기들은 항력 기반 요 액추에이터 사용하거나 정적/동적 안정성이 조율된 특수 설계 필요</div>
+                    <div class="bullet">반면 새들은 다양한 날개 형태로 수직 꼬리 없이도 안정적 비행 가능</div>
+                    <div class="bullet">새들이 날개와 꼬리 신경근육 반사(<span class="eng">neuromuscular reflexes</span>)를 통해 안정성과 제어를 달성한다는 생물학적 가설 존재</div>
+                    <div class="bullet">그러나 이 반사 메커니즘을 모방한 수직 꼬리 없는 자율 비행 시연은 아직 완전히 이루어지지 않음</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">그뢰벨스(1929): 새들의 반사 기능이 "자동 제어 항공기"처럼 작동한다는 가설 제시</div>
+                    <div class="bullet">비둘기는 몸통이 회전, 피치, 요잉될 때 일관된 반사 보여주며, 가슴의 필로플룸(<span class="eng">filoplumes</span>) 감각기관이 공기 흐름 감지 시 반사가 강화됨</div>
+                    <div class="bullet">고정날개 RC 모델 연구: 생체모방 날개 상반각(<span class="eng">dihedral</span>)과 날개 끝 슬롯이 활공 새들의 더치 롤을 수동적으로 감쇠시킨다는 발견</div>
+                    <div class="bullet">그러나 자연에서 활공하는 새들은 꼬리를 지속적으로 변형시키고, 비둘기는 두드러진 날개 끝 슬롯 없이도 다양한 날개 형태로 활공함</div>
+                    <div class="bullet">이전 연구들은 새의 비행 안정성에 대한 공기역학적 해석을 제공했으나, 반사 기반 제어 방식의 자율 비행 검증은 부족</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">생체모방 변형 날개와 꼬리 로봇 모델 'PigeonBot II' 개발</div>
+                    <div class="bullet">52개의 비둘기 비행 깃털을 9개의 서보모터로 제어하여 지속적으로 변형 가능한 시스템 구현</div>
+                    <div class="bullet">PID 제어 기반 반사적 제어 루프(<span class="eng">reflexive control loop</span>) 설계: 롤 오류에 반응하는 날개 비대칭성, 꼬리 기울기, 꼬리 측면 편향 결합</div>
+                    <div class="bullet">롤 제어를 위해 날개 비대칭성, 꼬리 기울기, 꼬리 측면 편향 혼합 게인 [Kasymm, Kdev, Ktilt] = [1, 2, ¼] 사용</div>
+                    <div class="bullet">풍동 실험으로 반사적 제어 알고리즘 조정하여 난기류에서도 안정성 유지 검증</div>
+                    <div class="bullet">적응형 게인 스케줄러(<span class="eng">adaptive gain scheduler</span>)로 다양한 날개/꼬리 형태에 맞게 제어 게인 자동 조정</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">첫 단계로 'TailBot'을 이용해 꼬리 모핑만으로는 더치 롤 안정성 확보가 불충분함을 입증</div>
+                    <div class="bullet">PigeonBot II를 3자유도 볼 베어링에 장착하여 풍동에서 가상 비행 테스트 진행</div>
+                    <div class="bullet">개방 루프(제어 없음) 및 요 감쇠기만 사용 시 불안정성 보임</div>
+                    <div class="bullet">날개 비대칭성, 꼬리 기울기, 꼬리 측면 편향의 적절한 혼합으로 롤 추적 최대화 달성</div>
+                    <div class="bullet">날개와 꼬리를 비슷한 비율로 모핑했을 때 최대 ~12%의 난기류 강도까지 안정적 비행 가능</div>
+                    <div class="bullet">실제 대기 환경에서 자율 비행 실험 수행: 이륙, 순항, 착륙 및 자율 선회 비행 성공적 시연</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">새들은 수직 꼬리 없이도 날개와 꼬리의 반사적 모핑으로 더치 롤 불안정성 극복 가능함 확인</div>
+                    <div class="bullet">날개 비대칭성, 꼬리 기울기, 꼬리 측면 편향의 혼합이 롤 제어와 안정성에 중요함 입증</div>
+                    <div class="bullet">비둘기가 비행 시 날개와 꼬리를 비슷한 비율로 모핑하는 행동적 특성의 기능적 이유 설명 가능</div>
+                    <div class="bullet">풍동 및 대기 비행 실험으로 비행하지 않는 새들에서 연구된 반사 기능의 비행 안정화 역할 확인</div>
+                    <div class="bullet">새의 꼬리 기울기가 요 각속도 감쇠에 중요한 역할 수행함을 발견</div>
+                    <div class="bullet">날개 상반각과 날개 끝 슬롯만으로는 더치 롤을 완전히 해결할 수 없고, 반사적 제어가 필요함 입증</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">생체모방 변형 날개와 꼬리를 가진 PigeonBot II로 수직 꼬리 없는 비행의 최소 메커니즘 모델 검증</div>
+                    <div class="bullet">비둘기와 같은 평면형은 수직 꼬리 없을 때 더치 롤 불안정성 보이지만, 반사적 제어로 안정화 가능</div>
+                    <div class="bullet">날개 비대칭성, 꼬리 기울기, 꼬리 측면 편향의 적절한 혼합이 롤 추적과 난기류 안정성 극대화</div>
+                    <div class="bullet">새들이 반사 기능을 통해 수직 꼬리 없는 비행을 달성하는 방법 확인</div>
+                    <div class="bullet">이 연구는 레이더 신호 감소와 효율성 향상이 가능한 무미익 항공기 설계에 영감 제공</div>
+                    <div class="bullet">향후 새의 근육과 비슷한 성능의 마이크로 액추에이터 개발과 더치 롤보다 10배 높은 주파수로 제어 가능한 기술 필요</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
