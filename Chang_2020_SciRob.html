@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Soft biohybrid morphing wings with feathers underactuated by wrist and finger motion</div>
+            <div class="authors">Eric Chang, Laura Y. Matloff, Amanda K. Stowers, David Lentink</div>
+            <div class="journal">Science Robotics, Vol. 5, eaay1246 (2020)</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                라이트 형제 이후 항공공학자들은 새처럼 정교하게 날개 형태를 변형시키는 비행기를 개발하려 노력해왔습니다. 본 연구는 비둘기 날개의 <span class="term">손목</span><span class="eng">(wrist)</span>과 <span class="term">손가락</span><span class="eng">(finger)</span> 동작이 깃털 배치를 조정하는 메커니즘을 분석하고, 이를 로봇 날개에 적용했습니다. <span class="term">파이젠봇</span><span class="eng">(PigeonBot)</span>이라 명명된 이 생체혼합형<span class="eng">(biohybrid)</span> 로봇은 4개의 서보 액추에이터로 42개 자유도와 40개 깃털 위치를 제어하는 <span class="term">언더액추에이티드</span><span class="eng">(underactuated)</span> 시스템입니다. 실험 결과, 부드러운 깃털 날개는 공기역학적 하중 아래서 빠르고 안정적으로 형태가 변하며, 비대칭 손목 및 손가락 동작으로 회전 기동을 시작할 수 있음을 확인했습니다.
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">항공기는 에일러론으로 회전, 플랩과 슬랫으로 양력과 항력 조절</div>
+                    <div class="bullet">새와 박쥐는 날개를 연속적으로 변형시켜 효율과 기동성 향상</div>
+                    <div class="bullet">일반 제비<span class="eng">(swift)</span>는 날개 형태 변형으로 활공 거리 60%, 시간 100% 향상</div>
+                    <div class="bullet">기존 항공기는 자유도<span class="eng">(degree of freedom)</span>마다 개별 제어 필요</div>
+                    <div class="bullet">새들은 골격-깃털 커플링으로 다수의 깃털을 소수 관절로 제어</div>
+                    <div class="bullet">본 연구는 비둘기<span class="eng">(Columba livia)</span>의 날개 구부림과 펴기 키네마틱스 분석</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet"><span class="term">RoboSwift</span>: 처음으로 깃털 모핑 날개 구현, 탄소섬유 깃털 8개 사용</div>
+                    <div class="bullet"><span class="term">iMorph</span>: 14개 깃털형 날개 세그먼트와 신축성 없는 나일론 코드 활용</div>
+                    <div class="bullet">최근 연구: 18개 인공 깃털로 비대칭 날개 모핑 구현</div>
+                    <div class="bullet">박쥐 날개 연구: 34개 이상의 자유도와 근육으로 막<span class="eng">(membrane)</span> 장력 조절</div>
+                    <div class="bullet">박쥐 날개와 달리 새 날개는 깃털 중첩으로 구부려도 유선형 유지</div>
+                    <div class="bullet">기존 로봇들은 단단한 인공 깃털을 사용해 제한적 모방만 가능</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">비둘기 사체<span class="eng">(N=3)</span>의 날개 키네마틱스 고해상도 촬영 분석</div>
+                    <div class="bullet">주성분 분석<span class="eng">(PCA)</span>: 첫 번째 성분이 골격 움직임의 75% 이상 설명</div>
+                    <div class="bullet">손목과 손가락 각도에 따른 20개 깃털<span class="eng">(remiges)</span> 위치 관계 측정</div>
+                    <div class="bullet">선형 전달 함수 발견: 깃털 각도 ≈ A×손목각도 + B×손가락각도 + 오프셋</div>
+                    <div class="bullet">실제 깃털 40개와 탄성 밴드를 이용한 언더액추에이티드 날개 설계</div>
+                    <div class="bullet">바이오하이브리드<span class="eng">(biohybrid)</span> 날개를 풍동에서 테스트하여 공기역학적 하중 분석</div>
+                    <div class="bullet">점진적 프로토타입 개발: 폼보드부터 실제 깃털 적용까지 단계적 발전</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">풍동 실험: 11.7m/s 속도, 4.4° 받음각으로 실외 비행 조건 재현</div>
+                    <div class="bullet">준정적<span class="eng">(quasi-static)</span> 실험: 손목 0.4Hz, 손가락 0.01Hz로 천천히 변형</div>
+                    <div class="bullet">깃털 전달 함수 검증: 평균 제곱근 오차<span class="eng">(RMSE)</span> 0.87°로 정확한 예측</div>
+                    <div class="bullet">시스템 대역폭: ~5Hz까지 안정적 응답(비둘기 순항 비행 주파수와 일치)</div>
+                    <div class="bullet">비행 실험: 3가지 변수 조합으로 108회 비행 테스트</div>
+                    <div class="bullet">결과 1: 손목은 큰 회전 각도, 손가락은 미세 조정 담당</div>
+                    <div class="bullet">결과 2: 비대칭 날개로 인한 초기 역요<span class="eng">(adverse yaw)</span> 발생 후 정상 회전</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">언더액추에이티드 시스템의 장점: 적은 제어 요소로 다수 자유도 제어</div>
+                    <div class="bullet">깃털 날개의 장점: 가볍고, 내구성 있으며, 충돌 후 복구 용이</div>
+                    <div class="bullet">공기역학적 특성: 깃털 중첩으로 안정적 유선형 유지</div>
+                    <div class="bullet">새들의 비행 제어 방식: 손가락으로 조향 가능성 제시</div>
+                    <div class="bullet">제어 특성: 회전 속도가 아닌 회전 위치 제어 방식 사용 추정</div>
+                    <div class="bullet">응용 가능성: 비침습적 조류 연구, 생태 조사, 환경 모니터링</div>
+                    <div class="bullet">미래 발전 방향: 생체모방 꼬리 통합, 날갯짓 비행, 완전 접이식 날개 개발</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet"><span class="term">파이젠봇</span>: 가장 포괄적인 새 날개 모방 비행 로봇 개발</div>
+                    <div class="bullet">깃털-골격 커플링의 핵심: 약 선형 전달 함수로 40개 깃털 언더액추에이트</div>
+                    <div class="bullet">메커니즘 원리: 손목과 손가락 각도로 날개 면적, 스팬, 종횡비 제어</div>
+                    <div class="bullet">깃털 전달 함수: 강성 지배적으로 공기역학적 하중 아래서도 안정적</div>
+                    <div class="bullet">비행 제어: 손목과 손가락의 비대칭 동작으로 회전 기동 시작 가능</div>
+                    <div class="bullet">새로운 통찰: 새들이 손가락으로 비행 중 조향할 가능성 시사</div>
+                    <div class="bullet">항공 응용: 더 경제적이고 단순한 모핑 날개 설계를 위한 생체모방 원리 제공</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
