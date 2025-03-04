@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">How flight feathers stick together to form a continuous morphing wing</div>
+            <div class="authors">Laura Y. Matloff, Eric Chang, Teresa J. Feo, Lindsie Jeffries, Amanda K. Stowers, Cole Thomson, David Lentink</div>
+            <div class="journal">Science 367, 293-297 (2020)</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                새들이 날개를 변형할 수 있는 능력은 가변적인 깃털 중첩에 의해 가능하며, 이는 항공기와 달리 독특한 특성입니다. 연결 조직의 탄성 순응성(elastic compliance)은 골격이 움직일 때 중첩된 비행 깃털을 수동적으로 재분배합니다. 특징적인 미세구조는 "방향성 벨크로(directional Velcro)"를 형성하여 인접한 깃털이 확장 중에 분리될 때, 수천 개의 엽상 섬모(lobate cilia)가 확률적으로 중첩되는 깃털의 갈고리 모양 소깃(rami)과 맞물려 틈새를 방지합니다. 이 구조는 날개가 접힐 때 자동으로 풀립니다. 저자들은 깃털을 가진 생체 하이브리드 비행 로봇을 사용하여 어떻게 이러한 두 가지 수동 메커니즘이 난류 속에서도 강인한 날개 변형을 가능하게 하는지 증명했습니다. 이러한 갈고리 모양 미세구조는 소리 없이 나는 종을 제외한 모든 새 종에서 깃털을 고정시키며, 이들의 깃털은 관련된 벨크로와 같은 소음도 결여되어 있습니다. 이러한 발견은 혁신적인 방향성 고정장치와 모핑 항공기 개발에 영감을 줄 수 있습니다.
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">새의 비행 깃털은 미세 단위까지 계층적으로 조직되어 있어, 양력을 지속할 만큼 단단하면서도 인접 깃털과 부드럽게 중첩될 수 있음</div>
+                    <div class="bullet">가변적인 깃털 중첩(variable feather overlap)은 새들이 날개와 꼬리를 곤충, 박쥐, 현대 항공기보다 더 광범위하게 변형할 수 있게 하여 타의 추종을 불허하는 비행 제어 제공</div>
+                    <div class="bullet">그러나 날개 확장과 굴곡 중 깃털 움직임이 어떻게 조정되는지 완전히 이해되지 않음</div>
+                    <div class="bullet">기존 연구자들은 '마찰 소깃(friction barbules)'이 날개 확장 중 중첩된 깃털이 너무 멀리 미끄러지는 것을 방지할 수 있다고 제안했으나, 그 메커니즘은 불분명함</div>
+                    <div class="bullet">깃털 고정과 마찰은 조류 비행 진화 이해에 있어 다른 의미를 가짐 - 확장 중 고정은 굴곡 시 풀리는 메커니즘 필요</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">Graham(1932, 1934)은 마찰 소깃의 미세 갈고리가 마찰을 증가시켜 인접 깃털을 함께 고정할 수 있다고 제안</div>
+                    <div class="bullet">후속 연구(Sick 1937, Rutschke 1965, Oehme 1959, 1963)에서는 단순히 깃털 간 마찰을 증가시킨다고 제안</div>
+                    <div class="bullet">비둘기에 대한 형태학적 연구(Hieronymus 2016)는 날개축을 연결하는 평활근과 인대가 깃털 조정에 수동적 안내를 제공할 수 있다고 제안</div>
+                    <div class="bullet">Videler(2006)는 "날개 확장과 굴곡 중 마찰력을 극복하기 위한 에너지 비용이 극도로 클 것"이라고 언급</div>
+                    <div class="bullet">이전 연구들은 깃털 미세구조의 역할에 대해 논쟁적이며, 깃털 조정 메커니즘에 대한 완전한 이해 부족</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">비둘기(Columba livia) 날개의 골격 및 비행 깃털 운동학을 측정하여 수동적 깃털 조정 메커니즘 분석</div>
+                    <div class="bullet">손목 각도(wrist angle)를 각 깃털 각도에 매핑하는 선형 전달 함수를 통해 깃털 재분배 메커니즘 발견</div>
+                    <div class="bullet">컴퓨터 제어 모터를 사용하여 중첩된 깃털을 분리하며 시간 경과에 따른 수직 및 대항 힘 측정</div>
+                    <div class="bullet">스캐닝 전자 현미경과 X선 현미경을 사용해 미세 수준에서 깃털 간 고정 구조 시각화</div>
+                    <div class="bullet">40개의 과소작동(underactuated) 비둘기 날개축을 가진 생체 하이브리드 비행 로봇 개발</div>
+                    <div class="bullet">다양한 새 종에서 깃털 고정 힘 측정 및 비교하여 대형 캘리포니아 콘도르(~9000g)부터 소형 킹버드(~40g)까지 분석</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">깃털 각도는 손목 각도와 선형적 관계를 가지며, 이는 과소작동 메커니즘(underactuated mechanism)을 시사</div>
+                    <div class="bullet">날개축(remiges) 사이의 탄성 인대(postpatagium)가 손목 각도를 모든 20개 날개축 각도에 연결하여 20:1 자유도 감소 실현</div>
+                    <div class="bullet">중첩된 깃털 쌍에서 저항력 측정 결과, 확장 방향의 최대 저항력이 굴곡 시보다 최대 10배 높게 나타남</div>
+                    <div class="bullet">미세구조 분석 결과, 하부 깃털의 내측 소깃에 엽상 등쪽 섬모(lobate dorsal cilia)가 있고, 상부 깃털의 외측 소깃에 갈고리 모양 배측 융기(hook-shaped ventral ridge)가 존재</div>
+                    <div class="bullet">로봇 날개 테스트 결과, 탄성 과소작동과 깃털 고정 모두 연속적 날개 변형에 필요함을 확인</div>
+                    <div class="bullet">조용히 나는 종(부엉이, 굴뚝새)을 제외한 모든 종에서 방향성 깃털 고정 메커니즘 확인</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">깃털 고정 메커니즘은 이전에 제안된 '마찰 소깃'의 강화된 마찰 기능과 모순되므로 '고정 소깃(fastening barbules)'으로 명칭 변경 제안</div>
+                    <div class="bullet">하부 깃털의 수천 개 고정 소깃이 상부 깃털의 수십~수백 개 갈고리 모양 소깃과 확률적으로 맞물려 깃털 분리 엔드스톱 형성</div>
+                    <div class="bullet">깃털 간 고정장치는 벨크로에 영감을 준 열매 갈고리처럼 확률적이면서도 도마뱀붙이 발 세타처럼 방향성을 가짐 - 이전에 관찰되지 않은 조합</div>
+                    <div class="bullet">깃털 고정력은 작은 새와 큰 새 모두에서 체중의 유사한 비율을 차지하며, 몸무게에 따라 약하게만 스케일링됨(body mass^-0.2)</div>
+                    <div class="bullet">부엉이 깃털에는 엽상 섬모와 갈고리 모양 소깃이 없고 대신 길고 얇은 벨벳 모양 반깃(velvety pennualue)이 있어 저소음 비행 가능</div>
+                    <div class="bullet">고정 소깃과 소음 감쇠 간의 기능적 트레이드오프 확인 - 소리 없이 나는 종에서 진화적으로 고정 소깃 손실</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">새의 비행 깃털은 두 가지 수동 메커니즘으로 조정됨: 탄성 과소작동(elastic underactuation)과 방향성 확률적 고정(directional probabilistic fastening)</div>
+                    <div class="bullet">탄성 과소작동은 깃털을 분배하는 방법을 설명하고, 방향성 고정은 날개 확장 중 깃털 사이의 틈새를 방지</div>
+                    <div class="bullet">미세 수준의 깃털 구조는 정밀한 생체역학적 기능을 가지며, 소깃 내 갈고리는 깃털 내 연결(hooklets)과 깃털 간 연결(lobate cilia)에 모두 사용됨</div>
+                    <div class="bullet">조용히 나는 종을 제외한 다양한 체중의 새 종에서 방향성 깃털 고정 메커니즘 발견</div>
+                    <div class="bullet">생체 하이브리드 로봇을 통해 이 메커니즘이 난류 속에서도 강인한 날개 변형을 가능하게 함을 증명</div>
+                    <div class="bullet">이러한 발견은 깃털 공룡에서 현대 조류로의 전환에서 중요한 기능적 혁신을 나타내며, 혁신적인 방향성 고정장치와 모핑 항공기 개발에 영감 제공 가능</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
