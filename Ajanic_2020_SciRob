@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Bioinspired wing and tail morphing extends drone flight capabilities</div>
+            <div class="authors">Enrico Ajanic, Mir Feroskhan, Stefano Mintchev, Flavio Noca, Dario Floreano</div>
+            <div class="journal">Science Robotics, Vol. 5, eabc2897 (2020), 28 October 2020</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                고정익 드론의 공기역학적 디자인은 특정 비행 영역에 최적화되어 있습니다. 넓은 양력면은 조종성과 민첩성을 제공하지만 고속 비행 시 작은 양력면보다 전력 소모가 커서 비행 거리가 감소합니다. 북방참매와 같은 조류는 날개와 꼬리 영역을 조절하여 울창한 숲에서의 공격적 비행과 개방된 지형에서의 빠른 순항 비행이라는 상충되는 공기역학적 요구 사항을 충족합니다. 본 연구에서는 이러한 변형 전략과 두 변형 표면의 시너지가 조류에서 영감을 받은 드론의 민첩성, 조종성, 안정성, 비행 속도 범위 및 다양한 비행 영역에서의 필요 전력을 현저히 개선할 수 있음을 보여줍니다. 풍동 실험, 최적화 연구 및 야외 비행 테스트를 통해 다양한 변형 구성에 대한 드론의 비행 능력을 특성화했습니다. 이러한 결과는 조류의 날개와 꼬리 사용에 대한 통찰력을 제공하고 적응형 비행 능력을 갖춘 드론을 위한 대안적 설계 원칙을 제시합니다.
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">고정익 드론은 재난 완화, 환경 모니터링, 검사 및 배송과 같은 민간 응용 분야에서 증가하는 역할을 담당하고 있습니다.</div>
+                    <div class="bullet">고정익 드론의 공기역학적 효율성은 같은 질량의 멀티콥터보다 더 낮은 에너지 소비로 빠른 순항 비행을 가능하게 합니다.</div>
+                    <div class="bullet">그러나 도시와 같은 복잡하고 장애물이 많은 환경에서의 항법에는 여전히 어려움이 있습니다.</div>
+                    <div class="bullet">복잡한 환경에서의 공격적인 비행에는 광범위한 비행 속도에서 급격하고 날카로운 코스 변화가 필요합니다.</div>
+                    <div class="bullet">이러한 비행 능력에는 높은 조종성<span class="eng">(maneuverability)</span>과 민첩성<span class="eng">(agility)</span>이 필요합니다.</div>
+                    <div class="bullet">고정익 드론은 양력면의 고정된 형상으로 인해 작은 범위의 작동 조건에서만 효과적으로 작동할 수 있습니다.</div>
+                    <div class="bullet">조류는 날개와 꼬리를 변형시켜 이러한 공기역학적 요구 사항을 충족시킬 수 있습니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">조류는 느리고 공격적인 비행 시 주 날개를 앞으로 쓸고 꼬리를 바깥쪽으로 펼쳐 상당한 양력과 항력을 생성합니다.</div>
+                    <div class="bullet">꼬리는 항공기 날개의 후미 플랩과 유사하게 주 날개에 추가적인 양력과 항력을 생성하는 데 도움을 줍니다.</div>
+                    <div class="bullet">민첩성을 높이기 위해 조류는 날개와 꼬리를 확대하고 편향시켜 상당한 공기역학적 모멘트를 생성합니다.</div>
+                    <div class="bullet">조류의 상대적으로 짧은 몸과 가벼운 날개는 낮은 고유 관성에 기여하여 민첩성을 더욱 향상시킵니다.</div>
+                    <div class="bullet">빠른 순항 비행에서 조류는 날개와 꼬리 표면의 크기를 줄이고 주 날개를 뒤로 쓸어 유선형 프로필을 생성하여 비행에 필요한 전력을 최소화합니다.</div>
+                    <div class="bullet">조류의 공기역학적 적응성은 연구자들에게 드론에 새 모방 변형 전략을 적용하도록 영감을 주었습니다.</div>
+                    <div class="bullet">이전 연구에서는 면적 변화의 조종성에 대한 영향, 비대칭 휩쓸기의 롤 제어에 대한 영향, 전방 휩쓸기의 피치 제어에 대한 영향을 연구했습니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">LisHawk 드론은 북방참매<span class="eng">(Northern goshawk)</span>의 날개와 꼬리 치수를 근사화하여 개발되었습니다.</div>
+                    <div class="bullet">이 드론은 비행 준비 중량 284g, 최대 날개 폭 1.05m를 가집니다.</div>
+                    <div class="bullet">드론의 몸체는 충격으로부터 보호하기 위해 내구성 있고 유연하며 가벼운 발포 폴리프로필렌<span class="eng">(EPP)</span>로 제작되었습니다.</div>
+                    <div class="bullet">조류의 깃털과 유사한 인공 깃털<span class="eng">(artificial feathers)</span>로 구성된 변형 표면을 설계했습니다.</div>
+                    <div class="bullet">날개 변형은 날개 영역을 최대 41% 변화시킬 수 있으며, 꼬리 변형은 꼬리 영역을 최대 214% 변화시킬 수 있습니다.</div>
+                    <div class="bullet">날개와 꼬리 모두 서보모터를 통해 독립적으로 제어됩니다.</div>
+                    <div class="bullet">이 변형 메커니즘은 가볍고 기계적으로 견고하며 언더액츄에이티드 디자인<span class="eng">(underactuated design)</span>을 가집니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">풍동 실험: 날개와 꼬리 변형의 공기역학적 효과를 특성화하기 위해 다양한 구성에서 양력, 항력, 피치 및 롤 모멘트를 측정했습니다.</div>
+                    <div class="bullet">날개와 꼬리를 접힌 상태에서 펼친 상태로 변형시키면 최대 양력이 70.8% 증가하고 항력이 63.5% 증가합니다.</div>
+                    <div class="bullet">펼쳐진 날개와 꼬리 구성은 피치업 모멘트를 최대 169.7% 증가시키며, 높은 받음각에서도 양성을 유지합니다.</div>
+                    <div class="bullet">모폴로지 최적화 연구에서는 순항 비행 시 접힌 날개와 꼬리가 적은 전력을 소비하는 반면, 느린 비행 시에는 펼쳐진 날개와 꼬리가 더 효과적임을 보여줍니다.</div>
+                    <div class="bullet">펼쳐진 날개와 꼬리 구성은 드론이 접힌 날개와 꼬리 구성보다 44% 낮은 속도로 비행할 수 있게 합니다.</div>
+                    <div class="bullet">야외 비행 테스트에서는 풀업 기동 중 다양한 날개와 꼬리 구성에 대한 성능을 측정했습니다.</div>
+                    <div class="bullet">펼쳐진 날개와 꼬리 구성으로 수행된 풀업 기동에서 선형 및 각 가속도가 가장 크게 나타났습니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">날개와 꼬리 변형은 순항 비행과 공격적 비행이라는 두 가지 다양한 비행 체제에서 비행 성능을 크게 향상시킵니다.</div>
+                    <div class="bullet">순항 비행에서는 날개와 꼬리를 펼친 상태에서 접힌 상태로 변형시키면 전력 요구량이 감소하고 속도와 비행 거리가 증가합니다.</div>
+                    <div class="bullet">예를 들어, 9.6m/s에서 비행할 때 접힌 날개와 꼬리로 변형하면 전력 요구량이 55.4% 감소합니다.</div>
+                    <div class="bullet">공격적 비행에서는 날개와 꼬리를 펼치면 저속에서 조종성과 민첩성이 향상됩니다.</div>
+                    <div class="bullet">꼬리의 양력 생성 능력은 특히 주목할 만합니다. 전통적인 항공기에서 수평 꼬리의 역할은 피치 안정성과 제어로 제한되지만, LisHawk의 꼬리는 전체 양력에 기여합니다.</div>
+                    <div class="bullet">이러한 연구 결과는 조류의 날개와 꼬리 사용에 대한 통찰력을 제공하고 적응형 비행 능력을 갖춘 드론을 위한 대안적 설계 원칙을 제시합니다.</div>
+                    <div class="bullet">드론의 착륙 발자국을 줄이기 위해 초기동성<span class="eng">(supermaneuverability)</span>이라고 불리는 이 비행 능력을 적용할 수 있습니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">풍동 실험, 최적화 연구 및 비행 테스트 결과는 조류에서 영감을 받은 날개와 꼬리 변형이 드론의 비행 성능을 크게 향상시킬 수 있음을 보여줍니다.</div>
+                    <div class="bullet">날개와 꼬리 변형으로 제어성, 민첩성, 안정성 및 에너지 효율성 사이의 균형을 조정할 수 있습니다.</div>
+                    <div class="bullet">이 연구에서 소개된 조류에서 영감을 받은 변형 드론은 확장 가능한 깃털형 접이식 구조와 간단하고 신뢰할 수 있는 추진 시스템으로 제작되었습니다.</div>
+                    <div class="bullet">이는 새들처럼 장거리를 커버하고, 작은 지역에 정확하게 착륙하며, 제한된 공간에서 비행할 수 있는 항공기 설계의 새로운 세대를 위한 길을 열 수 있습니다.</div>
+                    <div class="bullet">고급 제어 및 기계 학습 방법을 통해 날개와 꼬리 변형의 전체 비행 잠재력을 활용할 수 있을 것입니다.</div>
+                    <div class="bullet">이러한 방법들은 센서 피드백을 기반으로 안정적이고 불안정한 비행에서 기계 변형 표면을 지속적으로 제어하고 최적으로 적응시킬 수 있는 자동 조종 장치를 생성할 수 있습니다.</div>
+                    <div class="bullet">이 연구는 조류의 비행 메커니즘에 대한 이해를 넓히고 더 효율적이고 유연한 드론 설계의 가능성을 보여줍니다.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
