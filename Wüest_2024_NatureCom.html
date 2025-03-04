@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Agile perching maneuvers in birds and morphing-wing drones</div>
+            <div class="authors">Valentin Wüest, Simon Jeger, Mir Feroskhan, Enrico Ajanic, Fabio Bergonti & Dario Floreano</div>
+            <div class="journal">Nature Communications (2024) 15:8330 - Published online: 27 September 2024</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                조류의 착지 기동은 가장 빈번하고 민첩한 비행 시나리오 중 하나로, 날개와 꼬리의 빠른 형태 변화를 통해 최적화된 비행 궤적을 생성하여 높은 각속도와 가속도를 만들어 충격 시 운동에너지를 감소시킵니다. 이러한 기동에 관련된 행동적, 해부학적, 공기역학적 요소들은 잘 설명되어 있지만, 그 기저의 제어 전략은 제대로 이해되지 않았습니다. 본 연구에서는 가변 날개와 꼬리를 가진 조류 영감 드론에 최적 제어 방법을 적용하여, 해리스 매의 착지 기동 실험에서 도출된 가설인 '새들이 충격 전 운동에너지를 소산시키기 위해 높은 공격 각도로 비행하는 거리를 최소화한다'를 테스트했습니다. 그 결과 드론의 비행 궤적, 형태 변화 순서, 운동에너지 분포가 실제 새들에서 측정된 것과 유사했습니다. 또한 동물에게는 어렵거나 비윤리적일 수 있는 날개 조작 실험을 통해 새와 가변 날개 드론의 최적 착지 기동 성능에 중요한 형태 변화 요소를 밝혔습니다.
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">맹금류는 유사한 크기와 질량의 날개 드론보다 훨씬 더 민첩한 기동이 가능합니다. 이들은 날개와 꼬리의 휩(sweep), 면적, 기울기를 순간적인 공기역학적 요구에 맞게 동적으로 조절할 수 있습니다.</div>
+                    <div class="bullet">착지 기동은 짧은 거리 내에서 운동에너지를 소산시켜 충격과 파지를 준비하는 과정으로, 다이빙 단계와 등반 단계로 구성되어 다양한 공기역학적 스펙트럼을 요구합니다.</div>
+                    <div class="bullet">해리스 매의 최근 실험실 연구에서 새들이 먼저 동력 다이빙으로 시작하여 운동에너지를 약간 증가시킨 후, 착지 목표물을 향해 동력 없이 상승함이 관찰되었습니다.</div>
+                    <div class="bullet">이 연구는 충격 에너지를 줄이는 것 외에도, 새의 제어 전략이 제어 능력이 제한된 높은 공격 각도로 비행하는 거리를 최소화하는 것을 목표로 한다는 가설을 테스트합니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">해부학적 연구는 새의 날개 형태 변화가 주로 날개의 팔꿈치와 손목 관절의 연동 작동으로 이루어짐을 보여주었습니다.</div>
+                    <div class="bullet">갈매기 날개와 페레그린 팔콘의 공기역학적 모델링 연구는 이들 새가 날개를 휘어 공기역학적 중심을 앞으로 이동시키는 것을 보여주었습니다. 이러한 변화는 정적 피치 안정성을 감소시켜 민첩한 비행에 유리합니다.</div>
+                    <div class="bullet">조류 영감 로봇은 날개와 꼬리 형태 변화의 해부학적 및 운동학적 능력, 정적 및 동적 비행 조건에 미치는 공기역학적 영향, 다양한 비행 행동에서의 최적 제어 전략을 체계적으로 조사하는 모델로 활용되어 왔습니다.</div>
+                    <div class="bullet">기존 연구들은 접이식 날개, 휘는 메커니즘 등을 통해 조류의 특성을 모방했지만, 복잡한 조류 비행 기동의 제어 전략을 충분히 이해하지 못했습니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">본 연구에서는 가변 날개와 꼬리를 가진 조류 영감 드론(LisEagle)을 사용하여 착지 기동의 다이빙 및 등반 단계를 연구했습니다. 이 드론의 무게(695g)는 관찰된 해리스 매의 범위(620-874g) 내에 있습니다.</div>
+                    <div class="bullet">드론은 새들이 빠른 피치업 기동 중에 보이는 것과 동일한 날개 휩, 꼬리 휩, 꼬리 경사각을 사용하여 종방향 움직임을 제어할 수 있습니다.</div>
+                    <div class="bullet">풍동 측정과 공기역학적 모델링을 통해 드론의 동역학을 개발하고, 이를 통해 시뮬레이션에서 궤적 최적화 실험을 수행했습니다.</div>
+                    <div class="bullet">궤적 최적화는 충격 에너지와 높은 공격 각도로 비행하는 거리를 최소화하는 것을 목표로 하며, 초기 수평 거리(9-15m), 초기 전방 속도(10m/s), 최대 하방 수직 거리(1m) 제약 조건을 가집니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">최적 비행 궤적은 다이빙과 등반이라는 두 주요 단계로 구성된 뚜렷하고 일관된 휘둘림 패턴을 보여주었습니다. 다이빙 단계에서 드론은 약간의 가속으로 하강하는 동력 글라이드를 수행합니다.</div>
+                    <div class="bullet">등반 단계에서 드론은 피치 각도를 높여 공격 각도를 증가시키고 속도를 급격히 감소시키며 목표물을 향해 비동력 상승을 수행합니다.</div>
+                    <div class="bullet">해리스 매 연구의 비행과 시뮬레이션된 드론은 전환 상태(다이빙의 최저점)에서 충격 지점까지 각각 4.2m와 4.1m의 유사한 거리를 커버했습니다.</div>
+                    <div class="bullet">시뮬레이션 결과, 가변 날개 드론이 초기 운동에너지의 66%를 소산시키고 16%를 위치에너지로 전환하여 18%의 운동에너지만 남은 반면, 고정 날개 모델은 54%만 소산시켜 33%의 운동에너지가 남았습니다.</div>
+                    <div class="bullet">드론의 날개와 꼬리 작동 순서는 새들의 행동과 유사했으며, 물리적 드론에서의 검증 실험도 시뮬레이션 및 해리스 매의 궤적과 유사한 결과를 보였습니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">궤적 생성 방법이 새 연구에서 파생된 최적화 기준을 사용했지만, 명시적으로 새들의 비행 경로나 작동 순서를 모방하려 하지 않았음에도 결과적인 드론의 궤적과 작동 전략은 새들이 등반 단계 동안 보여주는 것과 매우 유사했습니다.</div>
+                    <div class="bullet">이는 맹금류가 충격 전 운동에너지를 줄이고 높은 공격 각도로 비행하는 거리를 최소화하는 것을 목표로 한다는 가설을 강력하게 뒷받침합니다.</div>
+                    <div class="bullet">날개와 꼬리의 능동적 형태 변화가 착지 기동의 등반 단계에서 중요한 역할을 함이 증명되었습니다. 날개와 꼬리 표면을 수정할 수 없는 드론은 착지 궤적을 생성할 수 있었지만, 등반 단계에서 약 50% 더 긴 거리가 필요하고 거의 두 배의 운동에너지 비율로 착지점에 충돌했습니다.</div>
+                    <div class="bullet">꼬리와 날개 휩이 모두 이러한 행동을 가능하게 하는 데 기여하지만, 날개 형태 변화의 제한이 성능 저하에 더 큰 영향을 미쳤습니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">본 연구는 맹금류가 충격 에너지를 줄이고 불안정한 비행 조건에서의 비행 시간을 최소화하기 위해 최적의 착지 기동 전략을 개발한다는 가설을 입증했습니다.</div>
+                    <div class="bullet">또한 조류 행동의 정량적 설명을 활용하여 조류 비행을 연구하고 비생물학적 비행체에서 조류 수준의 민첩성을 달성하는 최적 제어 전략을 도출할 수 있음을 보여주었습니다.</div>
+                    <div class="bullet">조류 영감 드론은 관찰과 동물 행동의 체계적 분석 사이의 간극을 메우고, 조류의 민첩한 비행 행동을 뒷받침하는 생체역학, 공기역학, 제어 전략의 복잡한 상호작용을 풀어내는 추가적인 도구로 활용될 수 있습니다.</div>
+                    <div class="bullet">로봇 모델은 관절 잠금과 같이 동물 연구에서는 불가능하거나 비윤리적일 수 있는 실험적 조작을 가능하게 하여, 착지 기동에서 날개 형태 변화의 역할을 연구할 수 있게 합니다.</div>
+                    <div class="bullet">이 방법론은 다양한 환경 조건(예: 바람이 많은 상황에서 장거리 비행, 제한된 공간 내 기동)에 대해 최적의 민첩성과 에너지 효율성을 제공하는 새로운 세대의 적응형 비행 기계를 위한 제어 전략을 생성하는 데에도 활용될 수 있습니다.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
