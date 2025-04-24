@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Experimental surrogate-based design optimization of wing geometry and structure for flapping wing micro air vehicles</div>
+            <div class="authors">Junhee Lee, Sang-Hoon Yoon, Chongam Kim</div>
+            <div class="journal">Aerospace Science and Technology 123 (2022) 107451</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                본 연구는 날갯짓 비행체(FWMAV)의 추진 효율 향상을 위한 날개 최적설계와 비원형 기어 기반 날갯짓 메커니즘 개발에 관한 연구이다. 제안된 메커니즘은 링키지 없이 비원형 기어를 활용하여 원하는 날갯짓 진폭과 각속도를 구현하는 매우 단순한 구조이다. 실험에서 발생하는 노이즈를 반영한 대리모델 기반 전역 최적화를 통해 기준 날개 대비 추진 효율이 3배 이상 향상된 최적 날개를 얻었다. 날개 기하학적 매개변수 중 비차원 면적 2차 모멘트 반경(r₂)이 최적 날개 설계에 핵심적인 역할을 하는 것으로 분석되었다. 높은 효율을 달성하기 위해서는 날개 면적이 증가함에 따라 r₂가 감소해야 한다. 동시에 r₂는 종횡비와 캠버 각도와 같은 다른 기하학적 매개변수의 최적값을 결정했다. 또한 r₂는 적절한 받음각을 생성하고 받음각 변동의 부정적 영향을 감소시키는 최적 정맥 위치와도 밀접한 관련이 있었다. 최적 날개와 제안된 날갯짓 메커니즘을 통해 기존 테일리스-FWMAV에 비해 더 나은 효율과 강인한 제작 가능성을 달성할 수 있었다.
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">곤충 날개는 민첩한 비행, 높은 기동성, 전진 및 제자리 비행 능력으로 주목받고 있음</div>
+                    <div class="bullet">자연에서 영감을 받아 날갯짓 날개의 유동 물리학 연구와 날갯짓 비행체(FWMAV) 개발이 진행됨</div>
+                    <div class="bullet">테일리스(꼬리 없는) FWMAV를 위한 다양한 날갯짓 메커니즘이 제안되었으나 구조적 복잡성, 작은 공간에서 큰 날갯짓 진폭 달성의 어려움, 제작 및 유지보수 문제 등의 한계가 있음</div>
+                    <div class="bullet">따라서 제한된 공간에서 큰 날갯짓 진폭을 생성하고 조립과 제작이 용이한 강인한 날갯짓 메커니즘 개발이 필요함</div>
+                    <div class="bullet">날갯짓 비행체의 전체 성능을 결정하는 주요 요인으로 날갯짓 날개 설계가 중요함</div>
+                    <div class="bullet">기존 연구는 주로 일원적 요소 변경법(OFAT)을 사용하여 날개 형상 및 정맥 매개변수를 연구했으나, 전체 설계 공간에서 최적 설계를 달성하기 위해 모든 변수를 동시에 고려하는 접근 방식이 필요함</div>
+                    <div class="bullet">특히 날갯짓 비행체의 비행 지속시간은 여전히 수 분 범위이며 효율이 곤충이나 새에 비해 현저히 낮기 때문에 추진 효율에 집중함</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">테일리스-FWMAV를 위한 기존 날갯짓 메커니즘 대부분은 'rack-pinion' 또는 'scotch-yoke' 메커니즘 기반으로 모터의 회전운동을 선형운동으로 변환</div>
+                    <div class="bullet">이러한 메커니즘은 구조적으로 단순하지만 제한된 공간에서 큰 날갯짓 진폭을 달성하기 어려움</div>
+                    <div class="bullet">대안으로 다중 링키지, 줄 기반, 혼합 메커니즘 등 상대적으로 복잡한 구조가 사용됨</div>
+                    <div class="bullet">복잡한 날갯짓 메커니즘은 구조적 마찰로 인한 비행 효율 감소와 손상 시 시간 소모적인 유지보수 문제 발생</div>
+                    <div class="bullet">날갯짓 날개 설계에 관한 광범위한 연구가 진행됨: 날개 면적, 종횡비, 캠버 각도, 비차원 면적 2차 모멘트 등의 기하학적 매개변수와 추력 생성 및 효율 간의 관계 연구</div>
+                    <div class="bullet">정맥(vein)은 날개의 유연성을 결정하여 공력에 직접적인 영향을 미치는 중요한 요소</div>
+                    <div class="bullet">그러나 대부분의 연구는 모든 매개변수를 동시에 고려하지 않고 일원적 요소 변경법(OFAT)을 사용하여 최적 설계 달성에 한계가 있음</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet"><span class="term">비원형 기어 기반 날갯짓 메커니즘(Non-circular gear based flapping mechanism)</span>: 매우 단순한 구조로 링키지 없이 비원형 기어를 활용하여 원하는 날갯짓 진폭과 각속도 달성</div>
+                    <div class="bullet">첫 번째 단계는 중앙 기어와 두 개의 측면 기어로 구성되며, 회전운동을 선형운동으로 변환</div>
+                    <div class="bullet">두 번째 단계는 동기화를 위해 첫 번째 단계의 측면 기어와 결합된 두 개의 원형 기어로 구성</div>
+                    <div class="bullet">링키지 없이 3개의 움직이는 부품만으로 구조적으로 단순하고 가볍고 견고한 메커니즘 구현</div>
+                    <div class="bullet"><span class="term">대리모델 기반 전역 최적화(Surrogate-based global optimization)</span>: 실험 노이즈를 반영한 크리깅(Kriging) 모델 활용</div>
+                    <div class="bullet">8개의 설계 변수를 사용: 면적(S), 종횡비(AR), 비차원 면적 2차 모멘트 반경(r₂), 캠버 각도(θ), 정맥 위치(V₁, V₂), 정맥 두께(V₁,t, V₂,t)</div>
+                    <div class="bullet">실험 불확실성을 측정 분산(σ²ₘ), 날개 제작 분산(σ²w), 날갯짓 장치 제작 분산(σ²f)으로 정량화하여 모델에 반영</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">총 120개의 날개 제작(초기 80개 + 업데이트된 40개)</div>
+                    <div class="bullet">6축 힘/모멘트 로드셀과 고속 카메라를 이용하여 추력과 날개 움직임 측정</div>
+                    <div class="bullet">최적 날개는 기준 날개 대비 추진 효율(T/P)이 3배 이상 향상됨: 기준 날개 2.81 → 최적 날개 9.27</div>
+                    <div class="bullet">면적 기준으로 구분된 6개의 대표 날개(R1~R6)를 분석한 결과:
+                        <ol style="margin-top: 2px; margin-bottom: 2px; padding-left: 20px;">
+                            <li>날개 면적(S)이 증가함에 따라 r₂가 감소해야 함</li>
+                            <li>r₂는 종횡비(AR)와 캠버 각도(θ) 등 다른 기하학적 매개변수의 최적값 결정</li>
+                            <li>날개 면적이 증가함에 따라 정맥 위치가 날개 뿌리 쪽으로 이동해야 함</li>
+                        </ol>
+                    </div>
+                    <div class="bullet">정맥 위치는 적절한 받음각 생성 및 탄성 변형으로 인한 받음각 변동의 부정적 영향 감소에 중요한 역할</div>
+                    <div class="bullet">3차원 유체-구조 상호작용 시뮬레이션 결과, 최적 날개는 안정적인 앞전 와류와 날개 끝 와류 생성으로 효율적인 추력 생성</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet"><span class="term">비차원 면적 2차 모멘트 반경(r₂)의 중요성</span>: 날개 면적이 증가함에 따라 r₂가 감소해야 하며, 그렇지 않으면 과도한 비틀림 각도로 인한 추력 손실 발생</div>
+                    <div class="bullet">작은 날개 면적에서는 높은 r₂가 효율적이나, 큰 날개 면적에서는 낮은 r₂가 f-역전(현상(f reversal: 낮은 r₂ 날개보다 높은 r₂ 날개가 같은 추력을 발생시키기 위해 더 높은 주파수 필요) 방지에 유리함</div>
+                    <div class="bullet"><span class="term">정맥 위치의 영향</span>: 최적 정맥 위치는 적절한 받음각 형성과 탄성 변형 감소의 균형점</div>
+                    <div class="bullet">정맥이 날개 뿌리에 너무 가까우면 스팬 방향으로 받음각이 적절히 분포되지 않아 추력 감소</div>
+                    <div class="bullet">정맥이 최적 위치보다 날개 끝에 가까우면 앞전과 정맥의 탄성 변형으로 인한 받음각 변동이 심해져 항력 증가</div>
+                    <div class="bullet"><span class="term">종횡비(AR)와 캠버 각도(θ)의 상관관계</span>: r₂가 낮은 날개(예: R4, R5)는 높은 종횡비와 캠버 각도에서도 적절한 받음각 유지 능력이 있음</div>
+                    <div class="bullet">날개 면적이 증가함에 따라 최적 종횡비와 캠버 각도도 증가하는 경향</div>
+                    <div class="bullet">단일 리튬 폴리머 배터리(3.7V, 100mAh)로 최적 날개의 지속 비행 시간은 약 9분(542초)으로 측정됨</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">비원형 기어 기반 날갯짓 메커니즘을 제안하여 구조적 단순성을 유지하면서 제한된 공간에서 큰 날갯짓 진폭 달성</div>
+                    <div class="bullet">실험 노이즈를 반영한 대리모델 기반 전역 최적화를 통해 기준 날개 대비 추진 효율이 3배 이상 향상된 최적 날개 설계</div>
+                    <div class="bullet">비차원 면적 2차 모멘트 반경(r₂)이 날개 최적 설계의 핵심 매개변수로 확인됨:
+                        <ol style="margin-top: 2px; margin-bottom: 2px; padding-left: 20px;">
+                            <li>날개 면적이 증가함에 따라 r₂가 감소해야 함</li>
+                            <li>r₂는 종횡비, 캠버 각도 등 다른 기하학적 매개변수의 최적값 결정</li>
+                            <li>r₂는 받음각 형성과 변동에 영향을 미치는 최적 정맥 위치와 밀접한 관련이 있음</li>
+                        </ol>
+                    </div>
+                    <div class="bullet">최적 날개 및 제안된 메커니즘을 통해 기존 테일리스-FWMAV보다 우수한 효율과 제작 용이성 달성</div>
+                    <div class="bullet">현재 결과는 제자리비행 및 기동비행에서 높은 효율과 비행 안정성을 달성하기 위해 확장되고 있음</div>
+                    <div class="bullet">제안된 날갯짓 메커니즘과 최적화 방법은 날개 운동학 최적화와 같은 다른 목적에도 적용 가능</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
